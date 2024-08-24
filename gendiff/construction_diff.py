@@ -6,10 +6,13 @@ def create_difference(data_1: dict, data_2: dict) -> list[dict]:
     :param: data_2 (dict): Second dictionary to compare.
 
     :return:
-        list: A list of dictionaries containing information about the differences between the two input dictionaries.
+        list: A list of dictionaries containing information about
+        the differences between the two input dictionaries.
         Each dictionary in the list contains the
-        following keys: 'key', 'value', 'old_value' (optional), 'new_value' (optional) and 'status'.
-        The 'status' key can have one of the following values: 'removed', 'added', 'unchanged', or 'changed'.
+        following keys: 'key', 'value', 'old_value' (optional),
+        'new_value' (optional) and 'status'.
+        The 'status' key can have one of the following values: 'removed',
+        'added', 'unchanged', or 'changed'.
     :rtype: list[dict]
     """
 
@@ -24,7 +27,8 @@ def create_difference(data_1: dict, data_2: dict) -> list[dict]:
         elif data_1[key] == data_2[key]:
             node = {'key': key, 'value': data_1[key], 'status': 'unchanged'}
         else:
-            node = {'key': key, 'old_value': data_1[key], 'new_value': data_2[key], 'status': 'changed'}
+            node = {'key': key, 'old_value': data_1[key],
+                    'new_value': data_2[key], 'status': 'changed'}
         list_of_differences.append(node)
 
     return list_of_differences

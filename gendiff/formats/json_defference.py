@@ -10,7 +10,7 @@ def json_style_difference(list_of_differences: list[dict]) -> str:
         if dct['status'] == 'removed':
             str_diff += f"\n  - {dct['key']}: {dct['value']}"
         if dct['status'] == 'changed':
-            str_diff += f"\n  - {dct['key']}: {dct['old_value']}\n  + {dct['key']}: {dct['new_value']}"
+            str_diff += (f"\n  - {dct['key']}: {dct['old_value']}\n"
+                         f"  + {dct['key']}: {dct['new_value']}")
     str_diff += '\n}'
     return str_diff
-
