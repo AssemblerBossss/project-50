@@ -1,8 +1,8 @@
-from gendiff.generate_diff import generate_diff1
+from gendiff import generate_diff
 
 
 def main():
-    generate_diff1()
+    generate_diff()
 
 
 if __name__ == '__main__':
