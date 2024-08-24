@@ -1,11 +1,8 @@
-from gendiff.cli import parse_arguments
-from gendiff.parser import parse_data, open_file
+from gendiff.generate_diff import generate_diff1
 
 
 def main():
-    arguments = parse_arguments()
-    print(parse_data(*open_file(arguments.first_file)))
-    # print(arguments)
+    generate_diff1()
 
 
 if __name__ == '__main__':
