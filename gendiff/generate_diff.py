@@ -1,19 +1,19 @@
-from gendiff.cli import parse_arguments
 from gendiff.parser import parse_data, open_file
 from gendiff.construction_diff import create_difference
 from gendiff.formats import json_style_difference
 
 
-def generate_diff() -> str:
+def generate_diff(first_argument: str, second_argument: str) -> str:
     """
-    Generate a difference report between two files.
+    Функция генерирует разницу между двумя файлами JSON.
+    :param: first_argument (str): путь к первому файлу JSON.
+    :param: second_argument (str): путь ко второму файлу JSON.
 
-    This function takes two file paths as input and compares the content of the
-    files to generate a difference report. It loads the data from the files,
-    finds the difference between the data
+    :return:
+        str: разница между файлами в формате JSON.
     """
-    arguments = parse_arguments()
-    data1 = parse_data(*open_file(arguments.first_file))
-    data2 = parse_data(*open_file(arguments.second_file))
+
+    data1 = parse_data(*open_file(first_argument))
+    data2 = parse_data(*open_file(second_argument))
     list_of_differences = create_difference(data1, data2)
     return json_style_difference(list_of_differences)

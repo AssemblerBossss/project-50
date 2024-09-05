@@ -2,8 +2,8 @@ def create_difference(data_1: dict, data_2: dict) -> list[dict]:
     """
     Compares two dictionaries and returns a list of differences.
 
-    :param: data_1 (dict): First dictionary to compare.
-    :param: data_2 (dict): Second dictionary to compare.
+    :param: data_1: First dictionary to compare.
+    :param: data_2: Second dictionary to compare.
 
     :return:
         list: A list of dictionaries containing information about
