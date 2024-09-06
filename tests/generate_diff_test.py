@@ -40,7 +40,7 @@ test_cases = [
 
 
 @pytest.mark.parametrize(
-    "generate_diff_func, file1, file2,expected_file", test_cases
+    "generate_diff_func, file1, file2, expected_file", test_cases
 )
 def test_generate_diff(
         generate_diff_func,

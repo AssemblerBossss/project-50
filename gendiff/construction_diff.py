@@ -10,9 +10,9 @@ def create_difference(data_1: dict, data_2: dict) -> list[dict]:
         the differences between the two input dictionaries.
         Each dictionary in the list contains the
         following keys: 'key', 'value', 'old_value' (optional),
-        'new_value' (optional) and 'status'.
+        'children' (optional), 'new_value' (optional) and 'status'.
         The 'status' key can have one of the following values: 'removed',
-        'added', 'unchanged', or 'changed'.
+        'added', 'unchanged','changed' or nested.
     :rtype: list[dict]
     """
 
@@ -26,6 +26,9 @@ def create_difference(data_1: dict, data_2: dict) -> list[dict]:
             node = {'key': key, 'value': data_2[key], 'status': 'added'}
         elif data_1[key] == data_2[key]:
             node = {'key': key, 'value': data_1[key], 'status': 'unchanged'}
+        elif isinstance(data_1[key], dict) and isinstance(data_2[key], dict):
+            children = create_difference(data_1[key], data_2[key])
+            node = {'key': key, 'type': 'nested', 'children': children}
         else:
             node = {'key': key, 'old_value': data_1[key],
                     'new_value': data_2[key], 'status': 'changed'}
