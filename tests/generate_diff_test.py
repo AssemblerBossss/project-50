@@ -1,5 +1,5 @@
 import os
-import json
+import pytest
 from gendiff.generate_diff import generate_diff
 
 
@@ -14,9 +14,35 @@ def read_fixture(file_path):
         return f.read()
 
 
-def test_flat_diff_json():
-    file_path1 = os.path.join(FIXTURES_PATH, 'test_file1.json')
-    file_path2 = os.path.join(FIXTURES_PATH, 'test_file2.json')
-    expected_result = json.loads(read_fixture(os.path.join(FIXTURES_PATH, 'test_result.json')))
-    result = generate_diff(file_path1, file_path2)
-    assert result == expected_result
+file1_json = os.path.join(os.path.dirname(__file__),  'fixtures/test1_file1.json')
+file2_json = os.path.join(os.path.dirname(__file__), 'fixtures/test1_file2.json')
+file1_yaml = os.path.join(os.path.dirname(__file__),  'fixtures/test_file1.yaml')
+file2_yaml = os.path.join(os.path.dirname(__file__),  'fixtures/test_file2.yaml')
+json_res = os.path.join(os.path.dirname(__file__), 'fixtures/results/test1_result.txt')
+
+file3_json = os.path.join(os.path.dirname(__file__),  'fixtures/test2_file1.json')
+file4_json = os.path.join(os.path.dirname(__file__),  'fixtures/test2_file2.json')
+json_res1 = os.path.join(os.path.dirname(__file__), 'fixtures/results/test2_result.txt')
+
+
+test_cases = [
+    (generate_diff, file1_json, file2_json, json_res),
+    (generate_diff, file1_yaml, file2_yaml, json_res),
+    (generate_diff, file3_json, file4_json, json_res1),
+    # (generate_diff, file1_yaml, file2_yaml, 'plain', plain_res),
+    # (generate_diff, file1_yaml, file2_yaml, 'json', json_res)
+]
+
+
+@pytest.mark.parametrize(
+    "generate_diff_func, file1, file2,expected_file", test_cases
+)
+def test_generate_diff(
+        generate_diff_func,
+        file1,
+        file2,
+        expected_file
+):
+    expected = read_fixture(expected_file)
+    actual = generate_diff_func(str(file1), str(file2))
+    assert actual == expected

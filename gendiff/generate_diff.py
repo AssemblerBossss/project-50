@@ -9,8 +9,7 @@ def generate_diff(first_argument: str, second_argument: str) -> str:
     :param: first_argument (str): путь к первому файлу JSON.
     :param: second_argument (str): путь ко второму файлу JSON.
 
-    :return:
-        str: разница между файлами в формате JSON.
+    :return: разница между файлами в формате JSON (str).
     """
 
     data1 = parse_data(*open_file(first_argument))
