@@ -1,0 +1,9 @@
+{
+    address: {'street': 'Leninsky Prospekt', 'house': 25, 'apartment': 45}
+    age: 30
+    city: Moscow
+  - name: John
+  + name: Misha
+  - phone: 777999
+  + phone: +9999999999
+}

@@ -1,0 +1,11 @@
+{
+  "name": "John",
+  "age": 30,
+  "city": "Moscow",
+  "address": {
+    "street": "Leninsky Prospekt",
+    "house": 25,
+    "apartment": 45
+  },
+  "phone": "777999"
+}
