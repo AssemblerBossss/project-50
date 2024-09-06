@@ -14,14 +14,14 @@ def read_fixture(file_path):
         return f.read()
 
 
-file1_json = os.path.join(os.path.dirname(__file__),  'fixtures/test1_file1.json')
+file1_json = os.path.join(os.path.dirname(__file__), 'fixtures/test1_file1.json')
 file2_json = os.path.join(os.path.dirname(__file__), 'fixtures/test1_file2.json')
-file1_yaml = os.path.join(os.path.dirname(__file__),  'fixtures/test_file1.yaml')
-file2_yaml = os.path.join(os.path.dirname(__file__),  'fixtures/test_file2.yaml')
+file1_yaml = os.path.join(os.path.dirname(__file__), 'fixtures/test_file1.yaml')
+file2_yaml = os.path.join(os.path.dirname(__file__), 'fixtures/test_file2.yaml')
 json_res = os.path.join(os.path.dirname(__file__), 'fixtures/results/test1_result.txt')
 
-file3_json = os.path.join(os.path.dirname(__file__),  'fixtures/test2_file1.json')
-file4_json = os.path.join(os.path.dirname(__file__),  'fixtures/test2_file2.json')
+file3_json = os.path.join(os.path.dirname(__file__), 'fixtures/test2_file1.json')
+file4_json = os.path.join(os.path.dirname(__file__), 'fixtures/test2_file2.json')
 json_res1 = os.path.join(os.path.dirname(__file__), 'fixtures/results/test2_result.txt')
 
 

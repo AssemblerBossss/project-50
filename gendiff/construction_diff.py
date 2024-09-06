@@ -30,10 +30,14 @@ def create_difference(data_1: dict, data_2: dict) -> list[dict]:
             node = {'key': key, 'old_value': data_1[key],
                     'new_value': data_2[key], 'status': 'changed'}
 
-        # Converting Boolean values to strings
-        for field in ('value', 'old_value'):
-            if field in node and isinstance(node[field], bool):
-                node[field] = str(node[field]).lower()
+        node = converting_boolean_to_string(node)
         list_of_differences.append(node)
 
     return list_of_differences
+
+
+def converting_boolean_to_string(node: dict):
+    for field in ('value', 'old_value'):
+        if field in node and isinstance(node[field], bool):
+            node[field] = str(node[field]).lower()
+    return node
