@@ -39,7 +39,7 @@ def create_difference(data_1: dict, data_2: dict) -> list[dict]:
     return list_of_differences
 
 
-def converting_boolean_to_string(node: dict):
+def converting_boolean_to_string(node: dict) -> dict:
     for field in ('value', 'old_value'):
         if field in node and isinstance(node[field], bool):
             node[field] = str(node[field]).lower()
