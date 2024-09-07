@@ -1,5 +1,10 @@
 {
-    address: {'street': 'Leninsky Prospekt', 'house': 25, 'apartment': 45}
+    address: {
+        - apartment: 44
+        + apartment: 45
+        house: 25
+        street: Leninsky Prospekt,
+        }
     age: 30
     city: Moscow
   - name: John
