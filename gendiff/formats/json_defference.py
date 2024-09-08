@@ -80,7 +80,7 @@ def format_node(data: dict, depth: int) -> list:
     return line
 
 
-def line_format(key: str, value:  any, depth: int, char: str) -> str:
+def line_format(key: str, value: any, depth: int, char: str) -> str:
     """
     Format a line in the "stylish" format.
 
@@ -109,6 +109,16 @@ def line_format(key: str, value:  any, depth: int, char: str) -> str:
 
 
 def format_dict(data: dict, depth: int) -> str:
+    """
+    Format a dictionary in the "stylish" format.
+
+    This function formats a dictionary representing a nested structure and
+    returns a string representation for the dictionary in "stylish" format.
+
+    :param data: Dictionary representing the nested structure.
+    :param depth: Current depth level.
+    :return: String representation of the dictionary in "stylish" format.
+    """
     indent = INDENT_CHAR * depth
     line = []
     for key, value in data.items():
@@ -119,7 +129,14 @@ def format_dict(data: dict, depth: int) -> str:
     return '\n'.join(result)
 
 
-def format_value(value: any):
+def format_value(value: any) -> any:
+    """
+    This function takes values in dictionaries
+    and converts it to a string representation other than integer.
+    Dictionaries and their values are processed recursively.
+    :param value: The value to be converted to a string.
+    :return: A string representation of a value or a dictionary.
+    """
 
     nested_dict = {}
 
@@ -133,4 +150,3 @@ def format_value(value: any):
     else:
         return value
     return nested_dict
-
