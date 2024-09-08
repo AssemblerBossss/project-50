@@ -108,29 +108,29 @@ def line_format(key: str, value:  any, depth: int, char: str) -> str:
     return '\n'.join(line)
 
 
+def format_dict(data: dict, depth: int) -> str:
+    indent = INDENT_CHAR * depth
+    line = []
+    for key, value in data.items():
+        line.append(line_format(key, value, depth, '  '))
 
-def format_dict(dictionary: dict, depth: int):
+    result = chain('{', line, [indent + '}'])
 
+    return '\n'.join(result)
 
 
 def format_value(value: any):
-    pass
 
+    nested_dict = {}
 
-def json_style_difference(list_of_differences: list[dict]) -> str:
-    str_diff: str = "{"
-    for dct in list_of_differences:
-        if dct['status'] == 'unchanged':
-            str_diff += f"\n    {dct['key']}: {dct['value']}"
-        if dct['status'] == 'added':
-            str_diff += f"\n  + {dct['key']}: {dct['value']}"
-        if dct['status'] == 'removed':
-            str_diff += f"\n  - {dct['key']}: {dct['value']}"
-        if dct['status'] == 'changed':
-            str_diff += (f"\n  - {dct['key']}: {dct['old_value']}\n"
-                         f"  + {dct['key']}: {dct['new_value']}")
-        if dct['status'] == 'nested':
-            nested_string: str = f"\n    {dct['key']}: {json_style_difference(dct['children'])}"
-            str_diff += nested_string
-    str_diff += '\n}'
-    return str_diff
+    if isinstance(value, bool):
+        return str(value).lower()
+    if value is None:
+        return 'null'
+    elif isinstance(value, dict):
+        for key in value:
+            nested_dict[key] = format_value(value[key])
+    else:
+        return value
+    return nested_dict
+
