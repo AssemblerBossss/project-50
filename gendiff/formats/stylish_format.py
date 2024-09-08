@@ -140,8 +140,6 @@ def format_value(value: any) -> any:
     :param value: The value to be converted to a string.
     :return: A string representation of a value or a dictionary.
     """
-
-    nested_dict = {}
     if isinstance(value, bool):
         return str(value).lower()
 
@@ -150,3 +148,4 @@ def format_value(value: any) -> any:
 
     else:
         return value
+
