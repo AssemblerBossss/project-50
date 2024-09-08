@@ -3,7 +3,7 @@ from gendiff.construction_diff import create_difference
 from gendiff.formats import diff_stylish_format
 
 
-def generate_diff(first_argument: str, second_argument: str) -> str:
+def generate_diff(first_argument: str, second_argument: str, format_name: str) -> str:
     """
     Функция генерирует разницу между двумя файлами JSON.
     :param: first_argument (str): путь к первому файлу JSON.
@@ -15,5 +15,22 @@ def generate_diff(first_argument: str, second_argument: str) -> str:
     data1 = parse_data(*open_file(first_argument))
     data2 = parse_data(*open_file(second_argument))
     list_of_differences = create_difference(data1, data2)
-    print(list_of_differences)
-    return diff_stylish_format(list_of_differences)
+    diff = select_format(list_of_differences, format_name)
+    return diff
+
+
+def select_format(data: list, format_name: str) -> str:
+    """
+    Sets the diff report output format based on the given argument
+
+    :param data: Difference tree.
+    :param format_name: Stylish, plain or json.
+    :return: Formatted output.
+    """
+    if format_name == 'stylish':
+        return diff_stylish_format(data)
+    # elif form == 'plain':
+    #     return diff_plain_format(data)
+    #
+    # elif form == 'json':
+    #     return get_json(data)
