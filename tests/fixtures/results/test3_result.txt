@@ -1,10 +1,10 @@
 {
     address: {
-        - apartment: 44
-        + apartment: 45
+      - apartment: 44
+      + apartment: 45
         house: 25
-        street: Leninsky Prospekt,
-        }
+        street: Leninsky Prospekt
+    }
     age: 30
     city: Moscow
   - name: John

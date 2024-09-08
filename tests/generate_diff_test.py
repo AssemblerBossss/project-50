@@ -30,9 +30,9 @@ json_res3 = os.path.join(os.path.dirname(__file__), 'fixtures/results/test3_resu
 
 
 test_cases = [
-    # (generate_diff, file1_json, file2_json, json_res1),
-    # (generate_diff, file1_yaml, file2_yaml, json_res1),
-    # (generate_diff, file3_json, file4_json, json_res2),
+    (generate_diff, file1_json, file2_json, json_res1),
+    (generate_diff, file1_yaml, file2_yaml, json_res1),
+    (generate_diff, file3_json, file4_json, json_res2),
     (generate_diff, file5_json, file6_json, json_res3),
     # (generate_diff, file1_yaml, file2_yaml, 'plain', plain_res),
     # (generate_diff, file1_yaml, file2_yaml, 'json', json_res)

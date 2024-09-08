@@ -1,3 +1,3 @@
-from .json_defference import json_style_difference
+from .json_defference import diff_stylish_format
 
-__all__ = ['json_style_difference']
+__all__ = ['diff_stylish_format']

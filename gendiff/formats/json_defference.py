@@ -1,9 +1,9 @@
 from itertools import chain
-import templates
+from gendiff.formats.templates import TEMPLATE_STYLISH
 
 
 INDENT_CHAR = '    '
-STEP = 2
+STEP = 1
 
 
 def diff_stylish_format(data: list, depth: int = 0) -> str:
@@ -96,12 +96,14 @@ def line_format(key: str, value: any, depth: int, char: str) -> str:
 
     indent = INDENT_CHAR * depth
     line = []
+
     if isinstance(value, dict):
-        line.append(templates.TEMPLATE_STYLISH.format(
-            indent, char, key, format_dict(value, depth + STEP)))
+        line.append(TEMPLATE_STYLISH.format(
+            indent, char, key, format_dict(value, depth + STEP)
+        ))
 
     else:
-        line.append(templates.TEMPLATE_STYLISH.format(
+        line.append(TEMPLATE_STYLISH.format(
             indent, char, key, format_value(value)
         ))
 
@@ -121,6 +123,7 @@ def format_dict(data: dict, depth: int) -> str:
     """
     indent = INDENT_CHAR * depth
     line = []
+
     for key, value in data.items():
         line.append(line_format(key, value, depth, '  '))
 
@@ -139,14 +142,11 @@ def format_value(value: any) -> any:
     """
 
     nested_dict = {}
-
     if isinstance(value, bool):
         return str(value).lower()
+
     if value is None:
         return 'null'
-    elif isinstance(value, dict):
-        for key in value:
-            nested_dict[key] = format_value(value[key])
+
     else:
         return value
-    return nested_dict
