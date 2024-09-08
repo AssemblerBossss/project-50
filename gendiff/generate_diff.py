@@ -15,4 +15,5 @@ def generate_diff(first_argument: str, second_argument: str) -> str:
     data1 = parse_data(*open_file(first_argument))
     data2 = parse_data(*open_file(second_argument))
     list_of_differences = create_difference(data1, data2)
+    print(list_of_differences)
     return diff_stylish_format(list_of_differences)

@@ -148,4 +148,3 @@ def format_value(value: any) -> any:
 
     else:
         return value
-
