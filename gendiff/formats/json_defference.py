@@ -1,4 +1,6 @@
 from itertools import chain
+import templates
+
 
 INDENT_CHAR = '    '
 STEP = 2
@@ -78,6 +80,25 @@ def format_node(data: dict, depth: int) -> list:
 
 
 def line_format(key: str, value:  any, depth: int, char: str) -> str:
+    indent = INDENT_CHAR * depth
+    line = []
+    if isinstance(value, dict):
+        line.append(templates.TEMPLATE_STYLISH.format(
+            indent, char, key, format_dict(value, depth + STEP)))
+
+    else:
+        line.append(templates.TEMPLATE_STYLISH.format(
+            indent, char, key, format_value(value)
+        ))
+    return '\n'.join(line)
+
+
+
+def format_dict(dictionary: dict, depth: int):
+    pass
+
+
+def format_value(value: any):
     pass
 
 
