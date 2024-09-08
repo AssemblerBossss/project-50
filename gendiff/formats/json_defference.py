@@ -22,7 +22,62 @@ def diff_stylish_format(data: list, depth: int = 0) -> str:
     return '\n'.join(result)
 
 
-def format_node(data: dict, depth: int) -> list[str]:
+def format_node(data: dict, depth: int) -> list:
+    """
+   Format the node in a "stylish" format.
+
+    This function formats the node representing the difference and returns
+    a list of strings representing the difference lines for a node in
+    "stylish" format.
+
+   :param data: Node representing a difference.
+   :param depth: Current depth level.
+   :return: List of strings representing the difference lines for the node
+            in "stylish" format.
+   """
+    line = []
+    if data['status'] == 'added':
+        line.append(line_format(
+            data['key'], data['value'], depth, '+ ')
+        )
+
+    elif data['status'] == 'removed':
+        line.append(
+            line_format(data['key'], data['value'], depth, '- ')
+        )
+
+    elif data['status'] == 'changed':
+        line.append(
+            line_format(data['key'], data['old_value'], depth, '- ')
+        )
+        line.append(
+            line_format(data['key'], data['new_value'], depth, '+ ')
+        )
+
+    elif data['status'] == 'unchanged':
+        line.append(
+            line_format(data['key'], data['value'], depth, '  ')
+        )
+
+    elif data['status'] == 'nested':
+
+        nest_indent = INDENT_CHAR * (depth + STEP)
+
+        nested_lines = [
+            line
+            for child in data['children']
+            for line in format_node(child, depth + STEP)
+        ]
+
+        nested_block = '\n'.join(nested_lines)
+        line.append(
+            f'{nest_indent}{data["key"]}: {{\n{nested_block}\n{nest_indent}}}'
+        )
+
+    return line
+
+
+def line_format(key: str, value:  any, depth: int, char: str) -> str:
     pass
 
 
