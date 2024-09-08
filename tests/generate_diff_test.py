@@ -41,7 +41,7 @@ json_res4 = os.path.join(FIXTURES_PATH, 'results/test4_result_stylish.txt')
 
 
 test_cases = [
-    (generate_diff, file1_json, file2_json, json_res1),
+    (generate_diff, file1_json, file2_json, json_res1, ),
     (generate_diff, file1_yaml, file2_yaml, json_res1),
     (generate_diff, file3_json, file4_json, json_res2),
     (generate_diff, file5_json, file6_json, json_res3),

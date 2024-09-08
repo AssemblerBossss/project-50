@@ -5,11 +5,12 @@ from gendiff.formats import diff_stylish_format
 
 def generate_diff(first_argument: str, second_argument: str, format_name: str) -> str:
     """
-    Функция генерирует разницу между двумя файлами JSON.
-    :param: first_argument (str): путь к первому файлу JSON.
-    :param: second_argument (str): путь ко второму файлу JSON.
+    The function generates the difference between two JSON files.
+    :param first_argument : path to the first JSON/YAML file.
+    :param second_argument : path to the second JSON/YAML file.
+    :param format_name : output format of the comparison result.
 
-    :return: разница между файлами в формате JSON (str).
+    :return: the difference between the files in the format_name format.
     """
 
     data1 = parse_data(*open_file(first_argument))

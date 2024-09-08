@@ -28,7 +28,8 @@ def create_difference(data_1: dict, data_2: dict) -> list[dict]:
             node = {'key': key, 'value': data_1[key], 'status': 'unchanged'}
         elif isinstance(data_1[key], dict) and isinstance(data_2[key], dict):
             children = create_difference(data_1[key], data_2[key])
-            node = {'key': key, 'status': 'nested', 'children': children}
+            if children:
+                node = {'key': key, 'status': 'nested', 'children': children}
         else:
             node = {'key': key, 'old_value': data_1[key],
                     'new_value': data_2[key], 'status': 'changed'}
