@@ -37,6 +37,7 @@ def format_node(data: dict, depth: int) -> list:
    :return: List of strings representing the difference lines for the node
             in "stylish" format.
    """
+
     line = []
     if data['status'] == 'added':
         line.append(line_format(
@@ -80,6 +81,19 @@ def format_node(data: dict, depth: int) -> list:
 
 
 def line_format(key: str, value:  any, depth: int, char: str) -> str:
+    """
+    Format a line in the "stylish" format.
+
+    This function formats a line representing a difference and returns a
+    string representation for the line in "stylish" format.
+
+    :param key: Key representing the difference.
+    :param value: Value associated with the key.
+    :param depth: Current depth level.
+    :param char: Symbol representing the type of difference.
+    :return: String representation of the line in "stylish" format.
+    """
+
     indent = INDENT_CHAR * depth
     line = []
     if isinstance(value, dict):
@@ -90,12 +104,13 @@ def line_format(key: str, value:  any, depth: int, char: str) -> str:
         line.append(templates.TEMPLATE_STYLISH.format(
             indent, char, key, format_value(value)
         ))
+
     return '\n'.join(line)
 
 
 
 def format_dict(dictionary: dict, depth: int):
-    pass
+
 
 
 def format_value(value: any):
