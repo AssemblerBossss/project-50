@@ -41,27 +41,28 @@ json_res4 = os.path.join(FIXTURES_PATH, 'results/test4_result_stylish.txt')
 
 
 test_cases = [
-    (generate_diff, file1_json, file2_json, json_res1, ),
-    (generate_diff, file1_yaml, file2_yaml, json_res1),
-    (generate_diff, file3_json, file4_json, json_res2),
-    (generate_diff, file5_json, file6_json, json_res3),
-    (generate_diff, file7_json, file8_json, json_res4),
-    (generate_diff, file7_yaml, file8_yaml, json_res4)
+    (generate_diff, file1_json, file2_json, json_res1, 'stylish'),
+    (generate_diff, file1_yaml, file2_yaml, json_res1, 'stylish'),
+    (generate_diff, file3_json, file4_json, json_res2, 'stylish'),
+    (generate_diff, file5_json, file6_json, json_res3, 'stylish'),
+    (generate_diff, file7_json, file8_json, json_res4, 'stylish'),
+    (generate_diff, file7_yaml, file8_yaml, json_res4, 'stylish')
     # (generate_diff, file1_yaml, file2_yaml, 'plain', plain_res),
     # (generate_diff, file1_yaml, file2_yaml, 'json', json_res)
 ]
 
 
 @pytest.mark.parametrize(
-    "generate_diff_func, file1, file2, expected_file", test_cases
+    "generate_diff_func, file1, file2, expected_file, format_", test_cases
 )
 def test_generate_diff(
         generate_diff_func,
         file1,
         file2,
-        expected_file
+        expected_file,
+        format_
 ):
     expected = read_fixture(expected_file)
-    actual = generate_diff_func(str(file1), str(file2))
+    actual = generate_diff_func(str(file1), str(file2),format_)
 
     assert actual == expected
