@@ -24,3 +24,5 @@ jobs:
           make install
       - name: Run lint
         run: make lint
+      - name: Run test
+        run: male test

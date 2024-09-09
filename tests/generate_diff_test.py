@@ -63,6 +63,6 @@ def test_generate_diff(
         format_
 ):
     expected = read_fixture(expected_file)
-    actual = generate_diff_func(str(file1), str(file2),format_)
+    actual = generate_diff_func(str(file1), str(file2), format_)
 
     assert actual == expected
