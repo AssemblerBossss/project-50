@@ -18,6 +18,7 @@ def create_difference(data_1: dict, data_2: dict) -> list[dict]:
 
     list_of_differences: list[dict] = []
     keys: list = sorted(data_1.keys() | data_2.keys())
+    node: dict = {}
 
     for key in keys:
         if key in data_1 and key not in data_2:

@@ -1,5 +1,5 @@
 from itertools import chain
-from gendiff.formats.templates import TEMPLATE_STYLISH
+from gendiff.formats.templates import TEMPLATE_STYLISH, TEMPLATE_STYLISH_FOR_EMPTY_STR
 
 
 INDENT_CHAR = '    '
@@ -103,9 +103,15 @@ def line_format(key: str, value: any, depth: int, char: str) -> str:
         ))
 
     else:
-        line.append(TEMPLATE_STYLISH.format(
-            indent, char, key, format_value(value)
-        ))
+        if value != '':
+            line.append(TEMPLATE_STYLISH.format(
+                indent, char, key, format_value(value)
+            ))
+
+        else:
+            line.append(TEMPLATE_STYLISH_FOR_EMPTY_STR.format(
+                indent, char, key, format_value(value)
+            ))
 
     return '\n'.join(line)
 
