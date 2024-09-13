@@ -1,2 +1,1 @@
 TEMPLATE_STYLISH = '{}  {}{}: {}'
-TEMPLATE_STYLISH_FOR_EMPTY_STR = '{}  {}{}:{}'
