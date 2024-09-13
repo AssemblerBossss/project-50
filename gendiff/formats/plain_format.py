@@ -65,6 +65,14 @@ def format_node(data: dict, path: str) -> list:
 
 
 def format_value(value: any) -> any:
+    """
+    The format_value function takes a value of any type and returns it in string format.
+
+    If the value is boolean, the function returns a string with its value in lowercase.
+    If the value is a dictionary, the function returns '[complex value]'.
+    If the value is None, the function returns 'null'.
+    In other cases, the function returns the string representation of the value.
+    """
 
     if isinstance(value, bool):
         return str(value).lower()
