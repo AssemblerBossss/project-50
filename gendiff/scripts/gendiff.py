@@ -5,7 +5,6 @@ from gendiff.cli import parse_arguments
 
 def main():
     args = parse_arguments()
-    print(args)
     diff = generate_diff(args.first_file, args.second_file, args.format)
     print(diff)
 
