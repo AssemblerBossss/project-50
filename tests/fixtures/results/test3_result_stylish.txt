@@ -9,6 +9,6 @@
     city: Moscow
   - name: John
   + name: Misha
-  - phone: 777999
+  - phone: +777999
   + phone: +9999999999
 }

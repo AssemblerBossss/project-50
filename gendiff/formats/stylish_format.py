@@ -21,7 +21,7 @@ def diff_stylish_format(data: list, depth: int = 0) -> str:
     indent: str = INDENT_CHAR * depth
     lines = [line for node in data for line in format_node(node, depth)]
     result = chain('{', lines, [indent + '}'])
-    return '\n'.join(result)
+    return '\n'.join(result).strip('/n')
 
 
 def format_node(data: dict, depth: int) -> list:

@@ -1,3 +1,3 @@
-Property address.apartment was updated. From 44 to 45
-Property name was updated. From 'John' to 'Misha'
-Property phone was updated. From '777999' to '+9999999999'
+Property 'address.apartment' was updated. From 44 to 45
+Property 'name' was updated. From 'John' to 'Misha'
+Property 'phone' was updated. From '+777999' to '+9999999999'

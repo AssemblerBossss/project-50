@@ -1,1 +1,1 @@
-Property age was updated. From 30 to 25
+Property 'age' was updated. From 30 to 25

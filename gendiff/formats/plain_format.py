@@ -77,7 +77,7 @@ def format_value(value: any) -> any:
     if isinstance(value, bool):
         return str(value).lower()
 
-    if isinstance(value, dict):
+    if isinstance(value, dict) or isinstance(value, list):
         return '[complex value]'
 
     if value is None:
@@ -86,5 +86,5 @@ def format_value(value: any) -> any:
     elif isinstance(value, str):
         return "'{}'".format(value)
 
-    elif isinstance(value, int):
+    else:
         return str(value)
