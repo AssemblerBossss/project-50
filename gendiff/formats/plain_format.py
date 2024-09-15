@@ -1,5 +1,5 @@
-from gendiff.formats.templates import (TEMPLATE_PLAIN_ADDED, TEMPLATE_PLAIN_UPDATED, TEMPLATE_PLAIN_REMOVED,
-                                       TEMPLATE_PLAIN_PATH)
+from gendiff.formats.templates import (TEMPLATE_PLAIN_ADDED, TEMPLATE_PLAIN_UPDATED,
+                                       TEMPLATE_PLAIN_REMOVED, TEMPLATE_PLAIN_PATH)
 
 
 def diff_plain_format(data: list) -> str:
